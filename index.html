@@ -1,79 +1,99 @@
- <!doctype html>
+<!doctype html>
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DinbotFlow — Preços | INBOTIX</title>
 
+<!-- Chargebee -->
+<script src="https://js.chargebee.com/v2/chargebee.js" data-cb-site="inbotix"></script>
+
 <style>
 :root{
   --brand:#19A7E0;
   --brand-dark:#0E7FB0;
-  --bg:#060810;
-  --card:#0f1424;
+  --bg0:#050711;
+  --bg1:#070a12;
+  --card:rgba(255,255,255,.06);
   --stroke:rgba(255,255,255,.10);
   --text:#ffffff;
-  --muted:rgba(255,255,255,.70);
+  --muted:rgba(255,255,255,.72);
   --radius:18px;
 }
 
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
-  background: linear-gradient(180deg,#050711,var(--bg));
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+  background:
+    radial-gradient(900px 500px at 25% 5%, rgba(25,167,224,.22), transparent 60%),
+    linear-gradient(180deg,var(--bg0),var(--bg1));
   color:var(--text);
 }
+
 .container{
   width:min(1100px,92%);
   margin:0 auto;
 }
 
-/* Header */
 header{
-  padding:24px 0;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  padding:24px 0;
 }
+
 .logo{
   font-weight:800;
   font-size:20px;
   color:var(--brand);
 }
-.cta-top{
-  background:linear-gradient(135deg,var(--brand),var(--brand-dark));
-  padding:10px 18px;
+
+.btn{
+  display:inline-block;
+  padding:12px 22px;
   border-radius:14px;
   font-weight:700;
   font-size:14px;
   text-decoration:none;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.06);
   color:#fff;
+  transition:.2s;
 }
 
-/* Hero */
+.btn:hover{
+  background:rgba(255,255,255,.10);
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--brand),var(--brand-dark));
+  border:none;
+}
+
 .hero{
   text-align:center;
-  padding:60px 0 30px;
-}
-.hero h1{
-  font-size:40px;
-  margin-bottom:15px;
-}
-.hero p{
-  font-size:16px;
-  color:var(--muted);
-  max-width:700px;
-  margin:0 auto;
+  padding:60px 0 20px;
 }
 
-/* Pricing */
+.hero h1{
+  font-size:40px;
+  margin-bottom:16px;
+}
+
+.hero p{
+  max-width:700px;
+  margin:0 auto;
+  font-size:16px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
 .pricing{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:30px;
   margin-top:50px;
   margin-bottom:60px;
+  display:flex;
+  justify-content:center;
 }
 
 .card{
@@ -81,7 +101,10 @@ header{
   border:1px solid var(--stroke);
   border-radius:var(--radius);
   padding:40px;
+  max-width:500px;
+  width:100%;
   text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.45);
   position:relative;
 }
 
@@ -102,10 +125,11 @@ header{
   font-weight:800;
   margin:15px 0;
 }
+
 .price small{
   font-size:16px;
-  font-weight:500;
   color:var(--muted);
+  font-weight:500;
 }
 
 .features{
@@ -114,11 +138,13 @@ header{
   margin:30px 0;
   text-align:left;
 }
+
 .features li{
   margin-bottom:14px;
   font-size:14px;
   color:var(--muted);
 }
+
 .features li::before{
   content:"✓";
   color:var(--brand);
@@ -126,61 +152,55 @@ header{
   margin-right:10px;
 }
 
-.btn-main{
-  display:inline-block;
-  padding:14px 26px;
-  background:linear-gradient(135deg,var(--brand),var(--brand-dark));
-  border-radius:14px;
-  font-weight:700;
-  font-size:15px;
-  color:#fff;
-  text-decoration:none;
-  margin-top:15px;
-}
-
-/* Compare Table */
-.compare{
+.section{
   margin-top:60px;
 }
-.compare h2{
+
+.section h2{
   text-align:center;
   margin-bottom:30px;
 }
+
 table{
   width:100%;
   border-collapse:collapse;
 }
+
 th,td{
   padding:16px;
   border-bottom:1px solid var(--stroke);
   font-size:14px;
 }
+
 th{
   text-align:left;
   color:var(--muted);
 }
+
 td{
   text-align:right;
 }
+
 td:first-child{
   text-align:left;
   color:var(--muted);
 }
+
 .highlight{
   color:var(--brand);
   font-weight:700;
 }
 
-/* Footer CTA */
-.cta-section{
+.cta{
   text-align:center;
   padding:60px 0;
 }
-.cta-section h2{
-  font-size:28px;
+
+.cta h2{
   margin-bottom:15px;
 }
-.cta-section p{
+
+.cta p{
   color:var(--muted);
   margin-bottom:25px;
 }
@@ -200,44 +220,53 @@ footer{
 
 <header>
   <div class="logo">DinbotFlow</div>
-  <a href="https://app.dinbotflow.app/register?plan=pro_599" class="cta-top">Começar agora</a>
+
+  <a href="javascript:void(0)"
+     class="btn primary"
+     data-cb-type="checkout"
+     data-cb-item-0="dinbotflow-R-Monthly">
+     Assinar agora
+  </a>
 </header>
 
 <section class="hero">
-  <h1>Plano simples. Poder máximo.</h1>
+  <h1>Automação completa de LinkedIn + Email</h1>
   <p>
-    Automatize LinkedIn + Email com dados empresariais enriquecidos, e-mails corporativos,
-    integrações com CRMs e suporte em português.
-    Tudo que sua operação outbound precisa em um só lugar.
+    O DinbotFlow une automação, enriquecimento de dados empresariais,
+    e-mails corporativos e integração com CRMs para escalar sua
+    prospecção com previsibilidade.
   </p>
 </section>
 
 <section class="pricing">
-
   <div class="card">
-    <div class="badge">MAIS POPULAR</div>
+    <div class="badge">PLANO RECOMENDADO</div>
 
     <h2>DinbotFlow PRO</h2>
-    <div class="price">R$ 599 <small>/ mês</small></div>
+
+    <div class="price">
+      R$ 599 <small>/ mês</small>
+    </div>
 
     <ul class="features">
       <li>Automação completa de LinkedIn</li>
-      <li>Sequências e cadências de Email</li>
-      <li>Dados cadastrais de empresas</li>
-      <li>E-mails corporativos enriquecidos</li>
+      <li>Cadências e sequências de Email</li>
+      <li>Dados cadastrais empresariais</li>
+      <li>Enriquecimento de e-mails corporativos</li>
       <li>Integração com CRMs</li>
-      <li>Exportações ilimitadas</li>
       <li>Suporte em português</li>
     </ul>
 
-    <a href="https://app.dinbotflow.app/register?plan=pro_599" class="btn-main">
-      Assinar por R$ 599/mês
+    <a href="javascript:void(0)"
+       class="btn primary"
+       data-cb-type="checkout"
+       data-cb-item-0="dinbotflow-R-Monthly">
+       Assinar por R$ 599/mês
     </a>
   </div>
-
 </section>
 
-<section class="compare">
+<section class="section">
   <h2>O que está incluso</h2>
 
   <table>
@@ -258,7 +287,7 @@ footer{
       <td class="highlight">Incluso</td>
     </tr>
     <tr>
-      <td>Integrações CRM</td>
+      <td>Integração CRM</td>
       <td class="highlight">Incluso</td>
     </tr>
     <tr>
@@ -268,13 +297,15 @@ footer{
   </table>
 </section>
 
-<section class="cta-section">
+<section class="cta">
   <h2>Pronto para escalar sua prospecção?</h2>
-  <p>
-    Ative sua conta agora e comece a automatizar LinkedIn e Email hoje mesmo.
-  </p>
-  <a href="https://app.dinbotflow.app/register?plan=pro_599" class="btn-main">
-    Começar agora
+  <p>Ative sua conta agora e comece hoje mesmo.</p>
+
+  <a href="javascript:void(0)"
+     class="btn primary"
+     data-cb-type="checkout"
+     data-cb-item-0="dinbotflow-R-Monthly">
+     Começar agora
   </a>
 </section>
 
