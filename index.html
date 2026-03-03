@@ -1,0 +1,630 @@
+<!--
+INBOTIX • DinbotFlow • Página de Preços (GitHub-ready)
+Como usar:
+1) Crie um repositório no GitHub (ex: dinbotflow-precos)
+2) Adicione este arquivo como: index.html
+3) Coloque o logo no mesmo diretório com o nome: logo-inbotix.png
+   (ou troque o src do <img> para o nome correto do seu arquivo)
+4) Ative GitHub Pages (Settings → Pages → Deploy from branch)
+
+Obs: Ajuste os links do checkout/registro abaixo em: CONFIG
+-->
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DinbotFlow — Planos e Preços | INBOTIX</title>
+    <meta
+      name="description"
+      content="Assine o DinbotFlow e automatize LinkedIn + Email com dados cadastrais, e-mails corporativos enriquecidos, integrações com CRM e suporte em português."
+    />
+
+    <style>
+      :root{
+        /* Cores INBOTIX (ajuste fino se quiser) */
+        --brand: #19A7E0;         /* azul/ciano principal */
+        --brand-2: #0E7FB0;       /* tom mais escuro */
+        --ink: #0b1220;           /* texto */
+        --muted: #5b667a;         /* texto secundário */
+        --bg: #070a12;            /* fundo escuro */
+        --card: #0c1222;          /* cards */
+        --stroke: rgba(255,255,255,.10);
+        --glow: rgba(25,167,224,.35);
+        --ok: #29d28a;
+        --warn: #ffcc66;
+        --radius: 18px;
+        --shadow: 0 18px 60px rgba(0,0,0,.45);
+      }
+
+      *{ box-sizing: border-box; }
+      html,body{ height:100%; }
+      body{
+        margin:0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+        color: rgba(255,255,255,.92);
+        background:
+          radial-gradient(900px 500px at 20% 10%, rgba(25,167,224,.22), transparent 60%),
+          radial-gradient(900px 500px at 85% 10%, rgba(25,167,224,.10), transparent 60%),
+          linear-gradient(180deg, #060810, var(--bg));
+      }
+
+      a{ color:inherit; text-decoration:none; }
+      .container{ width:min(1120px, 92vw); margin:0 auto; }
+
+      /* Topbar */
+      .topbar{
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(10px);
+        background: rgba(7,10,18,.55);
+        border-bottom: 1px solid var(--stroke);
+        z-index: 20;
+      }
+      .topbar .inner{
+        display:flex; align-items:center; justify-content:space-between;
+        padding: 14px 0;
+      }
+      .brand{
+        display:flex; align-items:center; gap:12px;
+      }
+      .brand img{
+        height: 34px; width:auto; display:block;
+        filter: drop-shadow(0 10px 25px rgba(25,167,224,.18));
+      }
+      .brand .name{
+        line-height:1.1;
+      }
+      .brand .name strong{ display:block; letter-spacing:.2px; }
+      .brand .name span{ color: rgba(255,255,255,.70); font-size:12px; }
+
+      .nav{
+        display:flex; align-items:center; gap:10px;
+      }
+      .nav a{
+        font-size: 13px;
+        color: rgba(255,255,255,.78);
+        padding: 8px 10px;
+        border-radius: 12px;
+      }
+      .nav a:hover{ background: rgba(255,255,255,.06); }
+
+      .btn{
+        border: 1px solid rgba(255,255,255,.14);
+        background: rgba(255,255,255,.06);
+        color: rgba(255,255,255,.92);
+        padding: 10px 14px;
+        border-radius: 14px;
+        font-weight: 700;
+        font-size: 13px;
+        display:inline-flex; align-items:center; gap:8px;
+        transition: transform .15s ease, background .15s ease, border-color .15s ease;
+        cursor:pointer;
+        user-select:none;
+      }
+      .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22); }
+      .btn.primary{
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        border-color: transparent;
+        box-shadow: 0 18px 60px rgba(25,167,224,.18);
+      }
+      .btn.primary:hover{ box-shadow: 0 18px 70px rgba(25,167,224,.24); }
+
+      /* Hero */
+      .hero{
+        padding: 56px 0 24px;
+      }
+      .hero-grid{
+        display:grid;
+        grid-template-columns: 1.35fr .65fr;
+        gap: 22px;
+        align-items: start;
+      }
+      .eyebrow{
+        display:inline-flex; align-items:center; gap:10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(25,167,224,.35);
+        background: rgba(25,167,224,.10);
+        color: rgba(255,255,255,.86);
+        font-weight: 700;
+        font-size: 12px;
+      }
+      .dot{
+        width:10px; height:10px; border-radius:999px;
+        background: var(--brand);
+        box-shadow: 0 0 0 6px rgba(25,167,224,.18);
+      }
+      h1{
+        margin: 16px 0 10px;
+        font-size: clamp(28px, 4.2vw, 44px);
+        line-height: 1.08;
+        letter-spacing: -0.6px;
+      }
+      .sub{
+        color: rgba(255,255,255,.75);
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0 0 18px;
+        max-width: 60ch;
+      }
+      .hero-actions{
+        display:flex; flex-wrap:wrap; gap:10px;
+        margin-top: 16px;
+      }
+      .note{
+        margin-top: 12px;
+        color: rgba(255,255,255,.60);
+        font-size: 12px;
+      }
+
+      /* Price card */
+      .card{
+        border: 1px solid var(--stroke);
+        background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .price-card{
+        position: relative;
+      }
+      .price-card::before{
+        content:"";
+        position:absolute; inset:-2px;
+        background: radial-gradient(700px 220px at 50% 0%, rgba(25,167,224,.25), transparent 60%);
+        pointer-events:none;
+      }
+      .price-head{
+        padding: 18px 18px 14px;
+        border-bottom: 1px solid rgba(255,255,255,.10);
+      }
+      .badge{
+        display:inline-flex; align-items:center; gap:8px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+        background: rgba(41,210,138,.10);
+        border: 1px solid rgba(41,210,138,.30);
+        color: rgba(255,255,255,.90);
+      }
+      .price{
+        padding: 14px 18px 18px;
+      }
+      .plan-title{
+        font-weight: 900;
+        font-size: 16px;
+        margin: 0 0 6px;
+      }
+      .plan-desc{
+        margin:0 0 14px;
+        color: rgba(255,255,255,.70);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .big{
+        display:flex; align-items: baseline; gap:10px;
+        margin: 6px 0 14px;
+      }
+      .big .value{
+        font-size: 38px;
+        font-weight: 950;
+        letter-spacing: -0.6px;
+      }
+      .big .per{
+        color: rgba(255,255,255,.65);
+        font-weight: 700;
+      }
+      .divider{ height: 1px; background: rgba(255,255,255,.10); margin: 14px 0; }
+      ul.features{
+        margin:0; padding:0; list-style:none;
+        display:grid; gap:10px;
+      }
+      .features li{
+        display:flex; gap:10px; align-items:flex-start;
+        color: rgba(255,255,255,.82);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+      .check{
+        width: 18px; height: 18px; border-radius: 6px;
+        background: rgba(41,210,138,.16);
+        border: 1px solid rgba(41,210,138,.35);
+        display:grid; place-items:center;
+        margin-top: 1px;
+        flex: 0 0 auto;
+      }
+      .check svg{ width: 12px; height: 12px; }
+      .price-cta{
+        padding: 16px 18px 18px;
+        border-top: 1px solid rgba(255,255,255,.10);
+        display:grid; gap:10px;
+      }
+      .small-muted{
+        color: rgba(255,255,255,.60);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      /* Sections */
+      .section{
+        padding: 32px 0;
+      }
+      .section h2{
+        margin: 0 0 10px;
+        font-size: 20px;
+        letter-spacing: -.2px;
+      }
+      .section p{
+        margin: 0 0 16px;
+        color: rgba(255,255,255,.72);
+        line-height: 1.6;
+        font-size: 14px;
+      }
+      .grid-3{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .mini{
+        padding: 16px;
+      }
+      .mini h3{
+        margin: 0 0 6px;
+        font-size: 14px;
+        letter-spacing: -.2px;
+      }
+      .mini p{
+        margin: 0;
+        color: rgba(255,255,255,.70);
+        font-size: 13px;
+      }
+
+      /* FAQ */
+      details{
+        border: 1px solid rgba(255,255,255,.10);
+        background: rgba(255,255,255,.04);
+        border-radius: 16px;
+        padding: 14px 14px;
+      }
+      details + details{ margin-top: 10px; }
+      summary{
+        cursor: pointer;
+        font-weight: 800;
+        color: rgba(255,255,255,.88);
+        list-style:none;
+      }
+      summary::-webkit-details-marker{ display:none; }
+      details p{ margin: 10px 0 0; }
+
+      /* Footer */
+      footer{
+        padding: 26px 0 40px;
+        border-top: 1px solid rgba(255,255,255,.10);
+        color: rgba(255,255,255,.62);
+        font-size: 12px;
+      }
+      .foot{
+        display:flex; flex-wrap:wrap;
+        justify-content:space-between; gap:10px;
+        align-items:center;
+      }
+      .pill{
+        display:inline-flex; align-items:center; gap:8px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.04);
+      }
+
+      /* Responsive */
+      @media (max-width: 920px){
+        .hero-grid{ grid-template-columns: 1fr; }
+        .grid-3{ grid-template-columns: 1fr; }
+        .nav{ display:none; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- CONFIG -->
+    <script>
+      const CONFIG = {
+        checkoutUrl: "https://app.dinbotflow.app/register?plan=dinbotflow_pro_599",
+        whatsappNumberE164: "5511972769986", // suporte/contato
+        whatsappText: "Olá! Quero assinar o DinbotFlow (R$ 599/mês). Pode me ajudar com o onboarding?"
+      };
+    </script>
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="container">
+        <div class="inner">
+          <a class="brand" href="#top">
+            <!-- Troque o src para o nome do seu arquivo de logo -->
+            <img src="logo-inbotix.png" alt="INBOTIX" />
+            <div class="name">
+              <strong>DinbotFlow</strong>
+              <span>Automação LinkedIn + Email</span>
+            </div>
+          </a>
+
+          <nav class="nav">
+            <a href="#recursos">Recursos</a>
+            <a href="#faq">Dúvidas</a>
+            <a href="#seguranca">Segurança</a>
+          </nav>
+
+          <div style="display:flex; gap:10px; align-items:center;">
+            <a class="btn" id="btnWhats" href="#" aria-label="Falar no WhatsApp">Suporte</a>
+            <a class="btn primary" id="btnTopBuy" href="#" aria-label="Assinar agora">Assinar agora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <main id="top" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <section>
+            <div class="eyebrow"><span class="dot"></span> Assine online e comece hoje</div>
+            <h1>Plano simples, completo e pronto pra escalar seu outbound.</h1>
+            <p class="sub">
+              DinbotFlow é a plataforma da INBOTIX para automação de <strong>LinkedIn</strong> e <strong>Email</strong>, com
+              <strong>dados cadastrais de empresas</strong>, <strong>e-mails corporativos enriquecidos</strong>, integrações com
+              <strong>CRMs</strong> e <strong>suporte em português</strong>.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" id="btnHeroBuy" href="#">Contratar DinbotFlow</a>
+              <a class="btn" href="#recursos">Ver recursos</a>
+            </div>
+            <div class="note">
+              * Você assina e recebe o passo a passo de configuração (LinkedIn + Email + integrações).
+            </div>
+          </section>
+
+          <!-- Pricing Card -->
+          <aside class="card price-card" aria-label="Preço e plano">
+            <div class="price-head">
+              <span class="badge">Recomendado para operação ativa</span>
+            </div>
+
+            <div class="price">
+              <p class="plan-title">DinbotFlow PRO</p>
+              <p class="plan-desc">Para automação completa com dados e integrações.</p>
+
+              <div class="big">
+                <div class="value">R$ 599,00</div>
+                <div class="per">/ mês</div>
+              </div>
+
+              <div class="divider"></div>
+
+              <ul class="features">
+                <li>
+                  <span class="check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  Automação de <strong>LinkedIn</strong> (convites, mensagens, follow-ups)
+                </li>
+
+                <li>
+                  <span class="check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  Cadência de <strong>Email</strong> (sequências e follow-ups)
+                </li>
+
+                <li>
+                  <span class="check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  Acesso a <strong>dados cadastrais de empresas</strong> (enriquecimento)
+                </li>
+
+                <li>
+                  <span class="check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <strong>E-mails corporativos enriquecidos</strong> (melhor entregabilidade)
+                </li>
+
+                <li>
+                  <span class="check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <strong>Integrações com CRMs</strong> (hub, sync e exportações)
+                </li>
+
+                <li>
+                  <span class="check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <strong>Suporte em português</strong> (time INBOTIX)
+                </li>
+              </ul>
+            </div>
+
+            <div class="price-cta">
+              <a class="btn primary" id="btnCardBuy" href="#">Assinar por R$ 599,00/mês</a>
+              <a class="btn" id="btnCardWhats" href="#">Tirar dúvidas no WhatsApp</a>
+              <div class="small-muted">
+                Ao assinar, você recebe o acesso e o onboarding para configurar sua operação com segurança e consistência.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <!-- Recursos -->
+    <section id="recursos" class="section">
+      <div class="container">
+        <h2>O que você leva no DinbotFlow</h2>
+        <p>
+          Tudo que uma boa plataforma de LinkedIn + Email precisa para gerar conversas, com a camada de dados e operação da INBOTIX.
+        </p>
+
+        <div class="grid-3">
+          <div class="card mini">
+            <h3>LinkedIn + Email em uma cadência</h3>
+            <p>Crie fluxos multi-canal com follow-ups, pausas e regras de segurança.</p>
+          </div>
+
+          <div class="card mini">
+            <h3>Dados e enriquecimento</h3>
+            <p>Dados cadastrais de empresas e e-mails corporativos enriquecidos para prospecção.</p>
+          </div>
+
+          <div class="card mini">
+            <h3>Integrações com CRM</h3>
+            <p>Conecte seu pipeline e mantenha leads e atividades sincronizados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Segurança -->
+    <section id="seguranca" class="section">
+      <div class="container">
+        <h2>Como evitamos bagunça e melhora a previsibilidade</h2>
+        <p>
+          O objetivo é gerar resultado com constância, sem parecer spam e mantendo a operação organizada.
+        </p>
+
+        <div class="grid-3">
+          <div class="card mini">
+            <h3>Controle de ritmo</h3>
+            <p>Limites e cadências para manter a conta saudável e evitar excesso de ações.</p>
+          </div>
+          <div class="card mini">
+            <h3>Higienização e segmentação</h3>
+            <p>Dados e filtros para atacar ICP certo, com mensagens mais relevantes.</p>
+          </div>
+          <div class="card mini">
+            <h3>Operação assistida</h3>
+            <p>Suporte em português para configurar, ajustar e evoluir o processo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <h2>Dúvidas frequentes</h2>
+        <p>Se quiser, chama no WhatsApp e a gente responde em 2 minutos.</p>
+
+        <details>
+          <summary>Esse valor é por conta/automação?</summary>
+          <p>Sim — o plano é R$ 599,00 por mês para o DinbotFlow PRO (uma assinatura).</p>
+        </details>
+
+        <details>
+          <summary>Tem suporte em português?</summary>
+          <p>Sim. O suporte é em português com o time da INBOTIX.</p>
+        </details>
+
+        <details>
+          <summary>Consigo automatizar LinkedIn e Email juntos?</summary>
+          <p>Sim. Você pode criar cadências combinando ações no LinkedIn e envios por email.</p>
+        </details>
+
+        <details>
+          <summary>Integra com CRM?</summary>
+          <p>Sim. Você consegue integrar com CRMs e manter suas oportunidades e contatos organizados.</p>
+        </details>
+
+        <details>
+          <summary>Como eu contrato?</summary>
+          <p>Clique em “Assinar agora”. Se preferir, fale no WhatsApp e fazemos com você.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="section">
+      <div class="container">
+        <div class="card" style="padding:18px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
+          <div>
+            <h2 style="margin:0 0 6px;">Pronto para contratar?</h2>
+            <p style="margin:0; color:rgba(255,255,255,.72);">Assine o DinbotFlow PRO por <strong>R$ 599,00/mês</strong> e comece a automatizar hoje.</p>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <a class="btn" id="btnBottomWhats" href="#">WhatsApp</a>
+            <a class="btn primary" id="btnBottomBuy" href="#">Assinar agora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div class="pill">© <span id="year"></span> INBOTIX • DinbotFlow</div>
+          <div class="pill">Suporte WhatsApp: <strong id="waLabel"></strong></div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Helpers
+      function formatPhoneBR(e164){
+        // "5511999999999" -> "(11) 99999-9999" (formato simples)
+        const d = String(e164).replace(/\D/g,'');
+        const cc = d.slice(0,2);
+        const area = d.slice(2,4);
+        const rest = d.slice(4);
+        const a = rest.length === 9 ? rest.slice(0,5) + "-" + rest.slice(5) : rest;
+        return `+${cc} (${area}) ${a}`;
+      }
+
+      function buildWhatsUrl(){
+        const base = "https://wa.me/";
+        const text = encodeURIComponent(CONFIG.whatsappText || "");
+        return `${base}${CONFIG.whatsappNumberE164}?text=${text}`;
+      }
+
+      function wire(){
+        const buyUrl = CONFIG.checkoutUrl;
+        const waUrl = buildWhatsUrl();
+
+        // Set links
+        ["btnTopBuy","btnHeroBuy","btnCardBuy","btnBottomBuy"].forEach(id=>{
+          const el = document.getElementById(id);
+          if(el) el.href = buyUrl;
+        });
+
+        ["btnWhats","btnCardWhats","btnBottomWhats"].forEach(id=>{
+          const el = document.getElementById(id);
+          if(el) el.href = waUrl;
+        });
+
+        // Footer labels
+        document.getElementById("year").textContent = new Date().getFullYear();
+        document.getElementById("waLabel").textContent = formatPhoneBR(CONFIG.whatsappNumberE164);
+
+        // Basic tracking (optional)
+        // console.log("DinbotFlow pricing page loaded");
+      }
+
+      wire();
+    </script>
+  </body>
+</html>
