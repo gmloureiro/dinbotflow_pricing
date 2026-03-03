@@ -6,23 +6,23 @@
   <title>DinbotFlow — Preços e Teste Grátis | INBOTIX</title>
   <meta name="description" content="Teste grátis o DinbotFlow. Automação de LinkedIn + Email com dados empresariais, e-mails corporativos enriquecidos, integração com CRMs e suporte em português." />
 
-  <!-- Favicon (coloque favicon.png na raiz do repo) -->
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <!-- Fallback SVG (não depende de arquivo) -->
-  <link rel="icon" type="image/svg+xml"
-        href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%2319A7E0"/><stop stop-color="%230E7FB0" offset="1"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(%23g)"/><path d="M20 18h7v28h-7V18zm17 0h7v28h-7V18z" fill="white" opacity=".92"/></svg>' />
+  <!-- Favicons / App Icons (usar os arquivos na raiz do repo) -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-  <!-- Open Graph (opcional, melhora preview no WhatsApp) -->
+  <!-- Open Graph (preview WhatsApp/LinkedIn) -->
   <meta property="og:title" content="DinbotFlow — Preços e Teste Grátis | INBOTIX" />
   <meta property="og:description" content="Automação de LinkedIn + Email com dados empresariais e suporte em português. Assine por R$ 599/mês e comece com teste grátis." />
   <meta property="og:type" content="website" />
+  <!-- Se quiser um preview com imagem, suba uma imagem og.png e descomente: -->
+  <!-- <meta property="og:image" content="https://pricing.dinbotflow.app/og.png" /> -->
 
   <!-- Chargebee -->
   <script src="https://js.chargebee.com/v2/chargebee.js" data-cb-site="inbotix"></script>
 
   <style>
     :root{
-      /* INBOTIX light (elegante) */
       --brand:#19A7E0;
       --brand2:#0E7FB0;
 
@@ -30,7 +30,7 @@
       --bg2:#FFFFFF;
 
       --ink:#0B1220;
-      --muted:#475569;      /* slate */
+      --muted:#475569;
       --muted2:#64748b;
 
       --stroke: rgba(11,18,32,.12);
@@ -81,10 +81,26 @@
       display:flex;
       align-items:center;
       gap:12px;
-      min-width: 240px;
+      min-width: 260px;
     }
-    .brand img{
+    .brand .mark{
+      width: 34px;
       height: 34px;
+      border-radius: 12px;
+      display:grid;
+      place-items:center;
+      background: rgba(25,167,224,.10);
+      border: 1px solid rgba(25,167,224,.20);
+      overflow:hidden;
+    }
+    .brand .mark img{
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      display:block;
+    }
+    .brand .wordmark{
+      height: 28px;
       width:auto;
       display:block;
     }
@@ -243,7 +259,17 @@
     }
 
     .price-body{ padding: 16px 18px 18px; }
-    .plan-title{ margin:0 0 6px; font-size: 16px; font-weight: 950; }
+    .plan-title{ margin:0 0 6px; font-size: 16px; font-weight: 950; display:flex; align-items:center; gap:10px; }
+    .plan-title .plan-mark{
+      width: 22px; height: 22px;
+      border-radius: 8px;
+      display:grid; place-items:center;
+      background: rgba(25,167,224,.10);
+      border: 1px solid rgba(25,167,224,.18);
+      overflow:hidden;
+    }
+    .plan-title .plan-mark img{ width: 14px; height: 14px; object-fit:contain; display:block; }
+
     .plan-desc{ margin:0 0 14px; color: rgba(11,18,32,.68); font-size: 13px; line-height: 1.55; font-weight: 650; }
 
     .big{
@@ -326,7 +352,17 @@
       border-radius: 16px;
       box-shadow: 0 10px 28px rgba(10,20,40,.06);
     }
-    .mini h3{ margin:0 0 6px; font-size: 14px; letter-spacing:-.2px; font-weight: 950; }
+    .mini h3{ margin:0 0 6px; font-size: 14px; letter-spacing:-.2px; font-weight: 950; display:flex; align-items:center; gap:10px;}
+    .mini .mini-ic{
+      width: 22px; height: 22px;
+      border-radius: 9px;
+      display:grid; place-items:center;
+      background: rgba(25,167,224,.10);
+      border: 1px solid rgba(25,167,224,.18);
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .mini .mini-ic img{ width: 14px; height: 14px; object-fit:contain; display:block; }
     .mini p{ margin:0; color: rgba(11,18,32,.66); font-size: 13px; line-height: 1.55; font-weight: 650; }
 
     /* Videos */
@@ -358,7 +394,7 @@
     .embed{
       position:relative;
       width:100%;
-      padding-top: 56.25%; /* 16:9 */
+      padding-top: 56.25%;
       background: rgba(11,18,32,.06);
     }
     .embed iframe{
@@ -388,10 +424,18 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-    .logo-strip img{
-      height: 26px;
+    .logo-strip .wm{
+      height: 24px;
       width:auto;
       opacity: .95;
+      display:block;
+    }
+    .logo-strip .mk{
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+      display:block;
+      opacity: .96;
     }
     .logo-strip p{
       margin:0;
@@ -446,6 +490,13 @@
       justify-content:space-between;
       align-items:center;
     }
+    .foot .left{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .foot img{ height: 18px; width:auto; opacity:.92; }
 
     /* Floating WhatsApp */
     .wa-float{
@@ -471,6 +522,7 @@
       .nav{ display:none; }
       .grid-3{ grid-template-columns: 1fr; }
       .videos{ grid-template-columns: 1fr; }
+      .brand{ min-width: unset; }
     }
   </style>
 </head>
@@ -479,20 +531,14 @@
   <!-- CONFIG -->
   <script>
     const CONFIG = {
-      // Chargebee item id:
-      // Se você configurar o TRIAL no Chargebee (no próprio plano), não precisa mudar nada aqui.
       chargebeeItemId: "dinbotflow-R-Monthly",
-
       priceLabel: "R$ 599,00/mês",
-      trialLabel: "Teste grátis por 7 dias", // ajuste se for diferente
+      trialLabel: "Teste grátis por 7 dias",
 
       whatsappNumberE164: "5511972769986",
       whatsappText: "Olá! Quero começar o teste grátis do DinbotFlow. Pode me ajudar com o onboarding?",
-
       supportEmail: "suporte@inbotix.com.br",
 
-      // 5 aulas: troque pelos seus links do YouTube (IDs) ou links de embed.
-      // Se você usar YouTube, coloque apenas o ID do vídeo (ex: dQw4w9WgXcQ)
       lessons: [
         { title: "Aula 1 — Primeiros passos e configurações", duration: "8–12 min", youtubeId: "VIDEO_ID_1" },
         { title: "Aula 2 — Como criar sua cadência de LinkedIn", duration: "10–15 min", youtubeId: "VIDEO_ID_2" },
@@ -507,7 +553,14 @@
     <div class="wrap">
       <div class="row">
         <a class="brand" href="#top" aria-label="DinbotFlow">
-          <img src="logo-inbotix.png" alt="INBOTIX" onerror="this.style.display='none'">
+          <!-- Ícone -->
+          <span class="mark" title="INBOTIX">
+            <img src="logo-inbotix-mark.png" alt="INBOTIX" onerror="this.style.display='none'">
+          </span>
+
+          <!-- Logo INBOTIX (wordmark) -->
+          <img class="wordmark" src="logo-inbotix.png" alt="INBOTIX" onerror="this.style.display='none'">
+
           <div class="name">
             <strong>DinbotFlow</strong>
             <span>Preços • Teste grátis • Aulas</span>
@@ -559,7 +612,8 @@
 
           <div class="logo-strip" style="margin-top:18px;">
             <div class="left">
-              <img src="logo-inbotix.png" alt="INBOTIX" onerror="this.style.display='none'">
+              <img class="mk" src="logo-inbotix-mark.png" alt="INBOTIX" onerror="this.style.display='none'">
+              <img class="wm" src="logo-inbotix.png" alt="INBOTIX" onerror="this.style.display='none'">
               <p><b>DinbotFlow</b> é a plataforma de automação da INBOTIX para prospecção e escala.</p>
             </div>
             <a href="#plano" class="btn">Ver preço</a>
@@ -573,7 +627,10 @@
           </div>
 
           <div class="price-body">
-            <p class="plan-title">DinbotFlow PRO</p>
+            <p class="plan-title">
+              <span class="plan-mark"><img src="logo-inbotix-mark.png" alt="INBOTIX" onerror="this.style.display='none'"></span>
+              DinbotFlow PRO
+            </p>
             <p class="plan-desc">Plano completo para rodar prospecção com consistência e previsibilidade.</p>
 
             <div class="big">
@@ -604,7 +661,7 @@
             </a>
             <a class="btn" id="btnWhatsCard" href="#">Tirar dúvidas no WhatsApp</a>
             <div class="fine">
-              Dica: configure o <b>trial</b> no Chargebee para que o checkout já mostre o teste grátis automaticamente.
+              Dica: configure o <b>trial</b> no Chargebee para o checkout já mostrar o teste grátis automaticamente.
             </div>
           </div>
         </aside>
@@ -619,15 +676,15 @@
 
         <div class="grid-3">
           <div class="mini">
-            <h3>Cadência multicanal</h3>
+            <h3><span class="mini-ic"><img src="logo-inbotix-mark.png" alt="INBOTIX" onerror="this.style.display='none'"></span>Cadência multicanal</h3>
             <p>Combine LinkedIn e Email com follow-ups e controle de ritmo.</p>
           </div>
           <div class="mini">
-            <h3>Dados e enriquecimento</h3>
+            <h3><span class="mini-ic"><img src="logo-inbotix-mark.png" alt="INBOTIX" onerror="this.style.display='none'"></span>Dados e enriquecimento</h3>
             <p>Dados cadastrais e emails corporativos enriquecidos para prospecção.</p>
           </div>
           <div class="mini">
-            <h3>Integração com CRM</h3>
+            <h3><span class="mini-ic"><img src="logo-inbotix-mark.png" alt="INBOTIX" onerror="this.style.display='none'"></span>Integração com CRM</h3>
             <p>Leads, atividades e exportações conectadas ao seu pipeline.</p>
           </div>
         </div>
@@ -637,7 +694,7 @@
         <h2>5 aulas rápidas para você começar</h2>
         <p>
           Acesso imediato às aulas (curtas e objetivas) para configurar LinkedIn, Email, dados e integração com CRM.
-          Troque os <b>VIDEO_ID</b> pelos IDs reais do YouTube (ou seu embed).
+          Troque os <b>VIDEO_ID</b> pelos IDs reais do YouTube.
         </p>
 
         <div class="videos" id="videosGrid"></div>
@@ -684,7 +741,10 @@
       <footer>
         <div class="wrap">
           <div class="foot">
-            <div>© <span id="year"></span> INBOTIX — DinbotFlow</div>
+            <div class="left">
+              <img src="logo-inbotix.png" alt="INBOTIX" onerror="this.style.display='none'">
+              <span>© <span id="year"></span> INBOTIX — DinbotFlow</span>
+            </div>
             <div>Suporte: <strong id="supportLabel"></strong></div>
           </div>
         </div>
@@ -718,7 +778,6 @@
     }
 
     function youtubeEmbedUrl(id){
-      // privacy-enhanced mode
       return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0&modestbranding=1`;
     }
 
@@ -732,7 +791,7 @@
       const waFloat = document.getElementById("waFloat");
       if(waFloat) waFloat.href = waUrl;
 
-      // Chargebee item id on all checkout buttons
+      // Chargebee item id
       document.querySelectorAll(".cb-checkout").forEach(el=>{
         el.setAttribute("data-cb-item-0", CONFIG.chargebeeItemId);
       });
