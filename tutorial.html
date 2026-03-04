@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/favicon.ico" />
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/favicon.png" />
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/apple-touch-icon.png" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/logo-inbotix.png" />
+  <meta property="og:title" content="Como Usar — DinbotFlow | Guia Completo INBOTIX" />
+  <meta property="og:description" content="Guia completo de como utilizar o DinbotFlow. Do primeiro acesso até sua primeira campanha ativa." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
@@ -75,6 +81,10 @@
     }
 
     .logo { display: flex; align-items: center; gap: 10px; }
+
+
+    .logo img { height: 34px; width: auto; display: block; }
+    .logo .logo-text { display: none !important; }
 
     .logo-icon {
       width: 36px; height: 36px;
@@ -437,8 +447,11 @@
 <nav class="navbar">
   <div class="navbar-inner">
     <a href="index.html" class="logo">
-      <div class="logo-icon">IB</div>
-      <div class="logo-text">
+      <img src="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/logo-inbotix.png"
+           alt="INBOTIX — DinbotFlow"
+           style="height:34px;width:auto;display:block;"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="logo-text" style="display:none;">
         <div class="brand">INBOTIX</div>
         <div class="product">Dinbot<span>Flow</span></div>
       </div>
