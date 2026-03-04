@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/favicon.ico" />
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/favicon.png" />
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/apple-touch-icon.png" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/logo-inbotix.png" />
+  <meta property="og:title" content="DinbotFlow — Automação LinkedIn + Email | INBOTIX" />
+  <meta property="og:description" content="Automatize LinkedIn e Email com cadência, dados empresariais e suporte em português. Comece grátis por 14 dias." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
@@ -198,6 +204,10 @@
     }
 
     .navbar-logo { display: flex; align-items: center; gap: 10px; }
+
+
+    .navbar-logo img { height: 36px; width: auto; display: block; }
+    .navbar-logo .logo-text { display: none !important; }
 
     .logo-icon {
       width: 38px; height: 38px;
@@ -776,8 +786,11 @@
   <nav class="navbar" id="navbar">
     <div class="container navbar-inner">
       <a href="#" class="navbar-logo">
-        <div class="logo-icon">IB</div>
-        <div class="logo-text">
+        <img src="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/logo-inbotix.png"
+             alt="INBOTIX — DinbotFlow"
+             style="height:36px;width:auto;display:block;"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="logo-text" style="display:none;">
           <div class="brand">INBOTIX</div>
           <div class="product">Dinbot<span>Flow</span></div>
         </div>
@@ -1111,12 +1124,15 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <div class="logo-icon" style="width:30px;height:30px;font-size:.72rem">IB</div>
+        <img src="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/logo-inbotix.png"
+             alt="INBOTIX"
+             style="height:28px;width:auto;filter:brightness(0) invert(1);opacity:.85;"
+             onerror="this.style.display='none';" />
         <span>© 2026 <strong>INBOTIX</strong> — DinbotFlow</span>
       </div>
       <div class="footer-contact">
         <a href="tel:+5511972769986"><i class="fas fa-phone" style="margin-right:4px"></i>+55 (11) 97276-9986</a>
-        <a href="mailto:suporte@inbotix.com.br"><i class="fas fa-envelope" style="margin-right:4px"></i>suporte@inbotix.com.br</a>
+        <a href="/cdn-cgi/l/email-protection#7d0e080d120f09183d14131f12091405531e1210531f0f"><i class="fas fa-envelope" style="margin-right:4px"></i><span class="__cf_email__" data-cfemail="621117120d101607220b0c000d160b1a4c010d0f4c0010">[email&#160;protected]</span></a>
         <a href="https://wa.me/5511972769986" target="_blank"><i class="fab fa-whatsapp" style="margin-right:4px"></i>WhatsApp</a>
       </div>
     </div>
@@ -1125,7 +1141,10 @@
   <!-- STICKY BAR -->
   <div class="sticky-bar" id="stickyBar">
     <div class="sticky-bar-left">
-      <div class="logo-icon" style="width:32px;height:32px;font-size:.7rem">IB</div>
+      <img src="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/logo-inbotix-mark.png"
+           alt="INBOTIX"
+           style="height:32px;width:auto;"
+           onerror="this.style.display='none';" />
       <div>
         <div class="price">DinbotFlow PRO — R$ 599/mês</div>
         <div class="label">14 dias grátis para testar</div>
@@ -1142,7 +1161,7 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function toggleFaq(el) {
       const item = el.closest('.faq-item');
       const isOpen = item.classList.contains('open');
